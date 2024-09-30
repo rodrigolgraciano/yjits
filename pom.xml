@@ -21,6 +21,7 @@
     <modules>
         <module>java8</module>
         <module>java23</module>
+        <module>java21-or</module>
     </modules>
 
     <build>

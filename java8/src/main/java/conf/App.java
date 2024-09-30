@@ -211,7 +211,7 @@ public class App {
      */
     static void calculateConferenceDiscount(Conference theConference) {
 
-        double discount = Math.random();
+        double discount = ThreadLocalRandom.current().nextDouble();
         System.out.println("Discount Alert!");
         //FIXME_7_: Switch - Convert to primitive instance-of switch case with guards
         if(discount <= 0.1d){

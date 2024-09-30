@@ -18,8 +18,7 @@ import static conf.Constants.SPEAKER_EMAIL;
 
 public class App {
 
-    //NOTE: Future versions of Java will auto-box primitives.
-    //FIXME_1_: Redundant boxing of primitives - no longer needed
+    //NOTE: valueOf not required in newer versions
     public static final Integer ZERO_INTEGER = Integer.valueOf(0);
 
     /**
@@ -29,9 +28,7 @@ public class App {
      *
      * @param args Command line arguments (not used in this instance)
      */
-    //FIXME_11_: Java 21 benefit
     public static void main(String[] args) {
-        //FIXME_2_: Uncomment to see Helpful NullPointerExceptions - (comment out after).
         //showNullPointerException();
 
         Conference theConference = new Seeder().seed();
@@ -44,11 +41,9 @@ public class App {
         System.out.println("Indented Speaker email: ");
         System.out.println(SPEAKER_EMAIL);
 
-        //FIXME_3_: Local Variable Type Inference: Use var instead
         Map<String, Integer> shirtCountMap = determineShirtCount(theConference);
         displayShirtCounts(shirtCountMap);
 
-        //FIXME_3_: Local Variable Type Inference: Use var instead?
         Map<String, Integer> hatCountMap = null;
         hatCountMap = determineHatCount(theConference);
         displayHatCounts(hatCountMap);
@@ -187,7 +182,7 @@ public class App {
     static void displayPaymentInvoicing(Conference theConference) {
         double processingFee = 0.0D;
         for (Attendee attendee : theConference.getAttendees()) {
-            //FIXME_5_: Switch Expressions: Improve readability
+            //NOTE: did not fix Switch Expressions
             switch (attendee.getPaymentType()) {
                 case AMEX:
                     processingFee += 0.10D;
@@ -213,7 +208,6 @@ public class App {
 
         double discount = ThreadLocalRandom.current().nextDouble();
         System.out.println("Discount Alert!");
-        //FIXME_7_: Switch - Convert to primitive instance-of switch case with guards
         if(discount <= 0.1d){
             System.out.println("Nice! You get yourself a discount");
         } else if (discount <= 0.2d){
@@ -278,7 +272,7 @@ public class App {
         }
 
         boolean allowedPersonFound = false;
-        //FIXME_6_: Switch - Pattern-matched instanceof - improved readability
+        //NOTE: did not fix Switch - Pattern-matched instanceof
         for (AllowedPerson allowedPerson : allowedPersonWinner) {
             if (allowedPerson instanceof Attendee attendee) {
                 System.out.println("Winner is an attendee: " +
@@ -313,7 +307,7 @@ public class App {
      * @param theConference - the current conference
      */
     static void displayRandomWinningSession(Conference theConference) {
-        //FIXME_9_: Replace to a Record getter +
+        //NOTE: Replace to a Record getter +
         //       upgrade to a toList() instead of Collectors.toList()
         List<String> sessions = theConference.getSessions().stream().
                 map(Session::getSessionTitle).collect(Collectors.toList());
@@ -321,7 +315,7 @@ public class App {
         String mostVotedSessionTitle = sessions.get(
                 ThreadLocalRandom.current().nextInt(0, sessions.size()));
 
-        //FIXME_9_: Replace to a Record getter
+        //NOTE: Replace to a Record getter
         Optional<Session> sessionObject = theConference.getSessions().stream()
                 .filter(session -> session.getSessionTitle().equals(mostVotedSessionTitle))
                 .findFirst();
@@ -341,7 +335,7 @@ public class App {
      */
     static void displaySessionDetails(Object object) {
 
-        //FIXME_10_: Use a record pattern
+        //NOTE: did not Use a record pattern
         if (object instanceof Session session) {
 
             String title = session.getSessionTitle();
@@ -373,7 +367,7 @@ public class App {
         Set<Session> sessions = new HashSet<>();
         sessions.add(session);
         fakeConference.setSessions(sessions);
-        //FIXME_9_: Replace to a Record getter
+        //NOTE: did not Replace to a Record getter
         Object aSpeakerFirstNameLength =
                 ((Session) fakeConference.getSessions().
                         toArray()[0]).getMainSpeakerModerator().firstName.length();

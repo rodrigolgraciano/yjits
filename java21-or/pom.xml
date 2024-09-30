@@ -13,13 +13,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- FIXME_0_: Change to the Java 23 -->
         <maven.compiler.source>21</maven.compiler.source>
-        <!-- FIXME_0_: Change to the Java 23 -->
         <maven.compiler.target>21</maven.compiler.target>
 
-        <!-- NOTE: Either use both above or simply use maven.compiler.release -->
-        <!--   available since Java 9 -->
         <!--        <maven.compiler.release>23</maven.compiler.release>-->
     </properties>
 
@@ -57,9 +53,6 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.13.0</version>
                     <configuration>
-                        <!-- FIXME_0_: Change to the Java 23 and -->
-                        <!--        uncomment an enable-preview compilerArgs-->
-<!--                        <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
                         <release>21</release>
                     </configuration>
                 </plugin>
@@ -78,7 +71,7 @@
                         <configuration>
                             <toolchains>
                                 <jdk>
-                                    <!-- FIXME_0_: Change to the Java 23 -->
+                                    <!-- NOTE: toolchains not fixed -->
                                     <version>8</version>
                                 </jdk>
                             </toolchains>
@@ -90,9 +83,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <!-- FIXME_0_: Change to the Java 23 and -->
-                    <!--        uncomment an enable-preview compilerArgs-->
-<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
                     <release>21</release>
                 </configuration>
             </plugin>
